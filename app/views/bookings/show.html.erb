@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="booking-information">
+    <div class="booking-basics">
+      <%= @booking.service.title %>
+      <%= @booking.service.description %>
+      <%= @booking.service.price %>
+      <%= @booking.date %>
+      <%= @booking.confirmation %>
+    </div>
+    <div class="booking-actions">
+      <%= link_to "Edit", edit_booking_path %>
+      <%= link_to "Back to bookings", bookings_path %>
+    </div>
+  </div>
+</div>
