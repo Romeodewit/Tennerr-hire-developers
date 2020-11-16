@@ -1,0 +1,7 @@
+<div class="container">
+	<h1>Hello</h1>
+
+	<% @services.each do |service| %>
+		<h3><%= service.title %> | <%= service.description %> | <%= service.category %> | £<%= service.price %></h3>
+	<% end %>
+</div>
