@@ -1,7 +1,13 @@
 <div class="container">
-	<h1>Hello</h1>
+	<h1>Hire a developer</h1>
+	<h2>Our services include: </h2>
 
 	<% @services.each do |service| %>
-		<h3><%= service.title %> | <%= service.description %> | <%= service.category %> | £<%= service.price %></h3>
+		<%= link_to service_path(service) do %>
+			<ul>
+				<li><%= service.title %> | <%= service.category %> </li>
+			</ul>
+		<% end %>
 	<% end %>
+
 </div>
