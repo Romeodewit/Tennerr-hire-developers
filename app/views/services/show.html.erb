@@ -1,0 +1,22 @@
+<div class="container">
+  <h1><%= @service.title %></h1>
+    <p><strong>Category:</strong>
+    	<%= @service.category %> at £<%= @service.price %></p>
+    <p><strong>Description:</strong>
+	  <%= @service.description %></p>
+</div>
+
+<%#= link_to 'Edit this service', new_service_path(@service) %>
+
+<div>
+	<%= simple_form_for(@booking) do |f| %>
+		<%= f.input :date %>
+	    <%#= f.input :rating %>
+	    <!-- <div class="form-actions"> -->
+	    <%= f.submit %>
+	<% end %>	
+</div>
+  
+</div>
+
+<%= link_to 'Back to all listings', services_path %>

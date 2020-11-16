@@ -6,6 +6,7 @@ class ServicesController < ApplicationController
   
   def show
   	@service = Service.find(params[:id])
+    @booking = Booking.new
   end
 
   def new
@@ -35,7 +36,7 @@ class ServicesController < ApplicationController
 
   	redirect_to service_path(@service)
   end
-
+  
   def destroy
   	@service = Service.find(params[:id])
   	@service.destroy
