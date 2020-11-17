@@ -1,10 +1,10 @@
 class BookingsController < ApplicationController
   before_action :find_booking, only: [:show, :edit, :update]
   before_action :find_service, only: [:create]
-  before_action :find_user, only: [:create]
+  before_action :find_user, only: [:create, :index]
 
   def index
-    @bookings = Booking.all
+    @bookings = Booking.where(user: current_user)
   end
 
   def show

@@ -1,2 +1,23 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% @services.each do |service| %>
+    <%= link_to service do %>
+			<ul>
+				<li><%= service.title %> | <%= service.category %> </li>
+			</ul>
+  <% end %>
+<% end %>
+
+<ul>
+<% @bookings.each do |booking| %>
+  <li><%= link_to booking.service.title, booking %><%= booking.deadline %>
+  <% if booking.status == "Accept" %>
+    <p>Accepted</p>
+  <% elsif booking.status == "Decline" %>
+    <p>Declined</p>
+  <% elsif booking.status == "Pending" %>
+    <p>Pending</p>
+  <% end %></li>
+<% end %>
+</ul>

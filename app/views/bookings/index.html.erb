@@ -1,7 +1,7 @@
 <h1>Bookings</h1>
 <ul>
   <% @bookings.each do |booking| %>
-  <li><%= link_to booking.service.title, booking %><%= booking.deadline %>
+    <li><%= link_to booking.service.title, booking %><%= booking.deadline %>
     <% if booking.status == "Accept" %>
       <p>Accepted</p>
     <% elsif booking.status == "Decline" %>
