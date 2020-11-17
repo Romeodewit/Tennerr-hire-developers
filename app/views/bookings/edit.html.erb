@@ -1,6 +1,6 @@
 <%= simple_form_for(@booking) do |f| %>
-  <%= f.input :date %>
-  <%= f.input :status %>
+  <%= f.input :deadline %>
+  <%= f.input :status, collection: Booking::STATUS %>
   <%= f.submit %>
 <% end %>
 
