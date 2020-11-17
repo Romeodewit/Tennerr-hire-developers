@@ -1,8 +1,7 @@
-<%= form_for(@booking) do |f| %>
-<%= f.input :date %>
-<%= f.input :status %>
-<%= f.submit %>    
+<%= simple_form_for(@booking) do |f| %>
+  <%= f.input :date %>
+  <%= f.input :status %>
+  <%= f.submit %>
 <% end %>
 
 <%= link_to "Back to bookings", bookings_path %>
-  

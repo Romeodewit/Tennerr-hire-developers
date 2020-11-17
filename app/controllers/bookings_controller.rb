@@ -25,8 +25,7 @@ class BookingsController < ApplicationController
   end
 
   def update
-    @booking.update(booking_params)
-    if @booking.save
+    if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
       render :edit
@@ -36,7 +35,7 @@ class BookingsController < ApplicationController
   private
 
   def find_user
-    @user = User.find(params[:user_id])
+    @user = current_user
   end
 
   def find_booking
@@ -46,7 +45,7 @@ class BookingsController < ApplicationController
   def find_service
     @service = Service.find(params[:service_id])
   end
-  
+
   def booking_params
     params.require(:booking).permit(:date, :status)
   end
