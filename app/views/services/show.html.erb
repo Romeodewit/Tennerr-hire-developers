@@ -2,11 +2,16 @@
   <h1><%= @service.title %></h1>
     <p><strong>Category:</strong>
     	<%= @service.category %> at £<%= @service.price %></p>
+	    <% if @service.photos.attached? %>
+	    	<% @service.photos.each do |photo| %>
+	    		<div class="image" style="background-image: url('<%= cl_image_path photo.key %>');"></div>
+				<% end %> 
+		  <% else %>
+			 	<div class="image" style="background-image: url('<%= asset_path 'generic_photo.jpg' %>');"></div>
+			<% end %>
     <p><strong>Description:</strong>
 	  <%= @service.description %></p>
 </div>
-
-<%#= link_to 'Edit this service', new_service_path(@service) %>
 
 <div>
 	<%= simple_form_for([@service, @booking]) do |f| %>
