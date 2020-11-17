@@ -15,10 +15,11 @@ class BookingsController < ApplicationController
     @booking.user = @user
     @booking.service = @service
     @booking.date = Date.today
-    if @booking.save
+    @booking.status = "Pending"
+    if @booking.save!
       redirect_to booking_path(@booking)
     else
-      render 'services/:id'
+      render '/services/show'
     end
   end
 

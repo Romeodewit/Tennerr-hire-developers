@@ -5,7 +5,15 @@
       <%= @booking.service.description %>
       <%= @booking.service.price %>
       <%= @booking.date %>
-      <%= @booking.status %>
+      <%= @booking.deadline %>
+      <% if @booking.status == "Accept" %>
+      <p>Accepted</p>
+      <% elsif @booking.status == "Decline" %>
+      <p>Declined</p>
+      <% else %>
+      <p>Pending</p>
+      <% end %>
+
     </div>
     <div class="booking-actions">
       <%= link_to "Edit", edit_booking_path %>
