@@ -1,2 +1,13 @@
 <h1>Pages#home</h1>
 <p>Find me in app/views/pages/home.html.erb</p>
+
+<% @services.each.limit(2) do |service| %>
+  <% if service.user == @user %>
+  <%= link_to service do %>
+			<ul>
+				<li><%= service.title %> | <%= service.category %> </li>
+			</ul>
+	<% end %>
+<% end %>
+
+<% @bookings.each do |booking| %>
