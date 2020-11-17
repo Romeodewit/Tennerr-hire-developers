@@ -1,5 +1,5 @@
 <%= simple_form_for(@booking) do |f| %>
-  <%= f.input :deadline %>
+  <%= f.input :deadline, html5: true %>
   <%= f.input :status, collection: Booking::STATUS %>
   <%= f.submit %>
 <% end %>
