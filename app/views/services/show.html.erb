@@ -8,6 +8,7 @@
 
 <%#= link_to 'Edit this service', new_service_path(@service) %>
 
+
 <div>
 	<%= simple_form_for(@booking) do |f| %>
 		<%= f.input :date %>
@@ -18,5 +19,5 @@
 </div>
   
 </div>
-
+<%= link_to 'Delete this service', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back to all listings', services_path %>
