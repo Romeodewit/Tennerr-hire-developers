@@ -4,17 +4,17 @@
 			<h1>Services</h1>
 		</div>
 	</div>
-	<div class="container">
-		<h1>Hire a developer</h1>
-		<h2>Our services include: </h2>
 
-		<% @services.each do |service| %>
-			<%= link_to service_path(service) do %>
-				<ul>
-					<li><%= service.title %> | <%= service.category %> </li>
-				</ul>
-			<% end %>
-		<% end %>
-
-	</div>
+  <div class="container mt-3 mb-5">
+    <h1>Hire a developer</h1>
+    <div class="container">
+      <div class="cards">
+        <% @services.each do |service| %>
+          <%= link_to service_path(service) do %>
+            <%= render "shared/card_service", service: service %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
