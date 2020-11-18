@@ -2,3 +2,10 @@
 @import "alert";
 @import "avatar";
 @import "navbar";
+@import "registration_banner";
+
+html, body{
+  box-sizing: border-box;
+  height: 100%;
+  background-color: white;
+}
