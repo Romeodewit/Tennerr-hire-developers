@@ -1,13 +1,20 @@
 <div class="container">
-	<h1>Hire a developer</h1>
-	<h2>Our services include: </h2>
+	<div class="services-banner">
+		<div class="container">
+			<h1>Services</h1>
+		</div>
+	</div>
+	<div class="container">
+		<h1>Hire a developer</h1>
+		<h2>Our services include: </h2>
 
-	<% @services.each do |service| %>
-		<%= link_to service_path(service) do %>
-			<ul>
-				<li><%= service.title %> | <%= service.category %> </li>
-			</ul>
+		<% @services.each do |service| %>
+			<%= link_to service_path(service) do %>
+				<ul>
+					<li><%= service.title %> | <%= service.category %> </li>
+				</ul>
+			<% end %>
 		<% end %>
-	<% end %>
 
+	</div>
 </div>
