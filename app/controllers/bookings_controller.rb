@@ -4,7 +4,8 @@ class BookingsController < ApplicationController
   before_action :find_user, only: [:create, :index]
 
   def index
-    @bookings = Booking.where(user: current_user)
+    @inward_bookings = current_user.incoming_bookings
+    @outward_bookings = current_user.bookings
   end
 
   def show
