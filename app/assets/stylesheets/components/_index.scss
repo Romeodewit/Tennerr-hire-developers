@@ -5,10 +5,14 @@
 @import "registration_banner";
 @import "services-banner";
 @import "card";
+@import "service-banner";
 
 html, body{
   box-sizing: border-box;
   height: 100%;
   background-color: white;
+  a:hover {
+    text-decoration: none;
+  }
 }
 
