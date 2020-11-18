@@ -1,5 +1,12 @@
 <div class="card" style="width: 18rem;">
-  <img src='<%= asset_path 'generic_photo.jpg' %>' alt="" class= "card-img-top">
+  <% if service.photos.attached? %>
+	  <% service.photos.each do |photo| %>
+      <%= cl_image_tag photo.key, class: "card-img-top" %>
+		<% end %>
+	<% else %>
+		<img src='<%= asset_path 'generic_photo.jpg' %>' alt="" class= "card-img-top">
+	<% end %>
+  
   <div class="card-body">
       <h5 class="card-title"><%= service.title %></h5>
       <p class="card-text"><%= service.category %></p>
