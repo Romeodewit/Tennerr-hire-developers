@@ -1,23 +1,32 @@
-<div class="container">
-  <div class="booking-information">
+<div class="background-opacity">
+	<% if @service.photos.attached? %>
+	  <% @service.photos.each do |photo| %>
+			<div class="service-banner" style="background-image: url('<%= cl_image_path photo.key %>');"><h1><%= @service.title %></h1></div>
+		<% end %>
+	<% else %>
+		<div class="service-banner" style="background-image: url('<%= asset_path 'generic_photo.jpg' %>');"><h1><%= @service.title %></h1></div>
+	<% end %>
+</div>
+
+<div>
+  <div class="booking-information bg-light">
     <div class="booking-basics">
-      <%= @booking.service.title %>
-      <%= @booking.service.description %>
-      <%= @booking.service.price %>
-      <%= @booking.date %>
-      <%= @booking.deadline %>
-      <% if @booking.status == "Accept" %>
-      <p>Accepted</p>
-      <% elsif @booking.status == "Decline" %>
-      <p>Declined</p>
-      <% else %>
-      <p>Pending</p>
-      <% end %>
+    <p><strong>Description: </strong><%= @booking.service.description %></p>
+    <p><strong>Price: </strong><%= @booking.service.price %></p>
+    <p><strong>Date booked: </strong><%= @booking.date %></p>
+    <p><strong>Deadline: </strong><%= @booking.deadline %></p>
+    <% if @booking.status == "Accept" %>
+      <p><strong>Status: </strong>Accepted</p>
+    <% elsif @booking.status == "Decline" %>
+      <p><strong>Status: </strong>Declined</p>
+    <% else %>
+      <p><strong>Status: </strong>Pending</p>
+    <% end %>
 
     </div>
     <div class="booking-actions">
-      <%= link_to "Edit", edit_booking_path %>
-      <%= link_to "Back to bookings", bookings_path %>
+      <%= link_to "Edit", edit_booking_path, class: "btn btn-dark" %>
+      <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
     </div>
   </div>
 </div>
