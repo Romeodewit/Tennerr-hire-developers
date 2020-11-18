@@ -9,6 +9,7 @@ class BookingsController < ApplicationController
   end
 
   def show
+    @service = @booking.service
   end
 
   def create
@@ -25,9 +26,11 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @service = @booking.service
   end
 
   def update
+    @service = @booking.service
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else

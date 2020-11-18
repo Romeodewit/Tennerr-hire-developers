@@ -1,7 +1,21 @@
-<%= simple_form_for(@booking) do |f| %>
-  <%= f.input :deadline, html5: true %>
-  <%= f.input :status, collection: Booking::STATUS %>
-  <%= f.submit %>
-<% end %>
+<div class="background-opacity">
+	<% if @service.photos.attached? %>
+	  <% @service.photos.each do |photo| %>
+			<div class="service-banner" style="background-image: url('<%= cl_image_path photo.key %>');"><h1><%= @service.title %></h1></div>
+		<% end %>
+	<% else %>
+		<div class="service-banner" style="background-image: url('<%= asset_path 'generic_photo.jpg' %>');"><h1><%= @service.title %></h1></div>
+	<% end %>
+</div>
 
-<%= link_to "Back to bookings", bookings_path %>
+<div class="booking-form-container bg-light">
+  <div class="booking-form">
+    <%= simple_form_for(@booking) do |f| %>
+    <%= f.input :deadline, html5: true %>
+    <%= f.input :status, collection: Booking::STATUS %>
+    <div class="d-flex justify-content-between">
+      <%= f.submit class: "btn btn-dark"%>
+      <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark my-1" %>
+    </div>
+  <% end %>
+
