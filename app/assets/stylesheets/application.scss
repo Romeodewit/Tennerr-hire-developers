@@ -11,9 +11,4 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-
-.image {
-	height: 300px;
-	width: 500px;
-	crop: fill;
-}
+@import "components/banner";
