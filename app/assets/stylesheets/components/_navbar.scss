@@ -10,3 +10,21 @@
 .navbar-lewagon .navbar-brand img {
   width: 40px;
 }
+
+.navbox {
+  display: flex;
+  width: 100%;
+}
+
+.box {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+
+}
+
+.box:first-child > span { margin-right: auto;
+justify-content: flex-start; }
+
+.box:last-child  > span { margin-left: auto;
+ justify-content: flex-end; }
