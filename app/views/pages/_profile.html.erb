@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="container" style="background-image: url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png); height: 30vh">
+    <h1 class="text-white">Profile</h1>
+  </div>
+
+  <div class="container">
+    <h2>My services</h2>
+    <div class="container">
+      <div class="cards">
+        <% services.each do |service| %>
+          <%= link_to service_path(service) do %>
+            <%= render "shared/card_service", service: service %>
+          <% end %>
+        <% end %>
+        <%= link_to new_service_path do %>
+          <%= render "shared/card_add" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Upcoming bookings</h2>
+  </div>
+</div>
+
+
+
+<p><%= user_signed_in? %> </p>
+
+
+<ul>
+<% bookings.each do |booking| %>
+  <li><%= link_to booking.service.title, booking %>, <%= booking.date %>, <%= booking.deadline %>
+    <p><%= booking.status %>, <%= booking.user.email %></p>
+  </li>
+<% end %>
+</ul>
