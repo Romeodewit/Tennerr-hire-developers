@@ -20,11 +20,21 @@
   flex: 1;
   display: flex;
   justify-content: center;
-
+  align-content: baseline;
 }
 
-.box:first-child > span { margin-right: auto;
-justify-content: flex-start; }
+.box:first-child { 
+  margin-right: auto;
+  justify-content: flex-start;
+  padding-left: 20px;
+  align-content: baseline; 
+}
 
-.box:last-child  > span { margin-left: auto;
- justify-content: flex-end; }
+.box:last-child { 
+  margin-right: auto;
+  justify-content: flex-end;
+  padding-right: 20px;
+  align-content: baseline;
+  position: relative;
+  top: 6px; 
+}

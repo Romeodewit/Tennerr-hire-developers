@@ -46,33 +46,36 @@
   </button>
 
   <div class="navbox">
-    <div class="box collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Profile", root_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Services", services_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Bookings", bookings_path, class: "nav-link" %>
-          </li>
-        <% else %>
-          <li class="nav-item active">
-              <%= link_to "Join", new_user_registration_path, class: "nav-link" %>
-          </li>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
-        <% end %>
-      </ul>
+    <div class="box">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "Profile", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Services", services_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Bookings", bookings_path, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item active">
+                <%= link_to "Join", new_user_registration_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
     <div class="box">
       <h1>Tennerr</h1>
     </div>
     <div class="box">
       <ul>
+        <% if user_signed_in? %>
         <li class="nav-item dropdown" style="list-style-type: none;">
           <%= image_tag "https://aui.atlassian.com/aui/8.6/docs/images/avatar-person.svg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
@@ -80,6 +83,7 @@
             <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>
+        <% end %>
       </ul>
     </div>
   </div>
