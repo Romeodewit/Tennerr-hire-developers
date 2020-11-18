@@ -1,6 +1,25 @@
-<h1>Bookings</h1>
+<div class="container">
+  <div class="services-banner">
+    <div class="container">
+      <h1>Bookings</h1>
+    </div>
+  </div>
 <ul>
-  <% @bookings.each do |booking| %>
+  <% @outward_bookings.each do |booking| %>
+    <li><%= link_to booking.service.title, booking %><%= booking.deadline %>
+    <% if booking.status == "Accept" %>
+      <p>Accepted</p>
+    <% elsif booking.status == "Decline" %>
+      <p>Declined</p>
+    <% elsif booking.status == "Pending" %>
+      <p>Pending</p>
+    <% end %></li>
+  <% end %>
+</ul>
+
+<h1>Inward bookings</h1>
+<ul>
+  <% @inward_bookings.each do |booking| %>
     <li><%= link_to booking.service.title, booking %><%= booking.deadline %>
     <% if booking.status == "Accept" %>
       <p>Accepted</p>
