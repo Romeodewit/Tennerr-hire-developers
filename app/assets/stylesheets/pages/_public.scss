@@ -1,0 +1,18 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+.btn-flat {
+  color: white;
+  padding: 8px 24px;
+  width: 200px;
+  border-radius: 4px;
+  background: #000;
+  transition: background 0.3s ease;
+}
+
+.btn-flat:hover {
+  background: #505050;
+  color: white;
+}
