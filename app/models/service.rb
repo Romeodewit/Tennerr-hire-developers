@@ -5,9 +5,17 @@ class Service < ApplicationRecord
 
   has_many_attached :photos
 
-  CATEGORIES = ['Front-End Development', 'Back-End Development', 'Full-Stack Development']
+  include PgSearch::Model
+  pg_search_scope :search_by_title_and_category,
+    against: [ :title, :category],
+    using: {
+      tsearch: { prefix: true }
+    }
+
+  CATEGORIES = ['Any Category', 'Front-End Development', 'Back-End Development', 'Full-Stack Development']
   validates :title, :description, :category, :price, presence: true
   validates :category, inclusion: { in: CATEGORIES }
+
 
 end
 
