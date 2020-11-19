@@ -6,11 +6,12 @@
 @import "services-banner";
 @import "card";
 @import "action";
-
+@import "form";
 @import "service-banner";
 
 @import "home_banner";
 @import "show-booking";
+@import "search_things";
 
 
 html, body{
@@ -21,4 +22,3 @@ html, body{
     text-decoration: none;
   }
 }
-

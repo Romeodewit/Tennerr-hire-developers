@@ -12,7 +12,6 @@
   <div class="booking-form">
     <%= simple_form_for(@booking) do |f| %>
     <%= f.input :deadline, html5: true %>
-    <%= f.input :status, collection: Booking::STATUS %>
     <div class="d-flex justify-content-between">
       <%= f.submit class: "btn btn-dark"%>
       <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark my-1" %>
