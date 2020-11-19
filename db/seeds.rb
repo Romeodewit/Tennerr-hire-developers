@@ -9,7 +9,7 @@ Booking.destroy_all
 Service.destroy_all
 User.destroy_all
 
-user1 = User.new(email: "mrabetr@hotmail.com", password: "123456")
+user1 = User.new(email: "random@hotmail.com", password: "123456", first_name: "Rafik", last_name: "Mrabet")
 
 service1 = Service.new(title: "Web Dev", description: "Ruby on Rails app", category: "Full-Stack Development", price: "20")
 service1.user = user1
