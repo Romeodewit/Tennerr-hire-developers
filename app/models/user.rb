@@ -2,6 +2,8 @@ class User < ApplicationRecord
   has_many :services
   has_many :bookings
   has_many :incoming_bookings, through: :services, source: :bookings
+
+  has_many_attached :photos
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
