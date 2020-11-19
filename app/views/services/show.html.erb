@@ -1,13 +1,8 @@
 <div class="background-opacity">
-	<%# if @service.photos.attached? %>
-	  <!-- <div class="service-banner" style="background-image: url('<%= cl_image_path @service.photos[0].key %>')"><h1><%= @service.title %></h1></div> -->
-	<%# else %>
 	<div class="service-banner" style="background-image: url('<%= asset_path 'generic_photo.jpg', crop: :fill %>');"><h1><%= @service.title %></h1></div>
-	<%#end %>
 </div>
 
-
-<div class="w-75 bg-light p-3" style="margin: 0px auto;">
+<div class="w-75 bg-light p-3" style="margin: 0px auto">
 	<div class="row">
 		<div class="col-7">	
 			<div class="d-flex flex-column" style="width: 100%">
@@ -31,18 +26,23 @@
 	</div>
 
 	<div class="col-12">
-		<%= link_to 'Edit', edit_service_path(@service) %>
-		<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% if @service.user == current_user %>
+			<%= link_to 'Edit', edit_service_path(@service) %>
+			<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
+		<% end %>
 		<%= link_to 'List', services_path %>
+	
+		<h2>Gallery</h2>
 	</div>
 
-	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 	<div class="carousel-inner">
 	  <% if @service.photos.attached? %>
   		<% @service.photos.each_with_index do |photo, index| %>
   			<!-- add logical statement to make first photo an active item -->
-    		<div class="carousel-item <%= "active" if index.zero? %>" style="width: 300px">
-        	<%= cl_image_tag photo.key, class: "card-img-top" %>
+    		<div class="carousel-item <%= "active" if index.zero? %>" style=" height: 60vh">
+        	<%= cl_image_tag photo.key, class: "d-block w-100" %>
     		</div>
       <% end %>
     <% end %>
@@ -56,8 +56,8 @@
 	  <span class="sr-only">Next</span>
 	</a>
 	</div>
-	</div>
-
-
 </div>
+
+
+
 
