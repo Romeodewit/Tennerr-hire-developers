@@ -1,8 +1,11 @@
 .home-banner {
-  background-image: url('https://images.unsplash.com/photo-1483058712412-4245e9b90334?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+  background-image: asset-url("landing_page_pic");
   background-size: cover;
   height: 90vh;
   color: #eee;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   // padding-top: 40vh;
 }
