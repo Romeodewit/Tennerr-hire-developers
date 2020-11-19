@@ -1,5 +1,5 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :update]
+  before_action :find_booking, only: [:show, :edit, :update, :cancel, :accept]
   before_action :find_service, only: [:create]
   before_action :find_user, only: [:create, :index]
 
@@ -38,6 +38,18 @@ class BookingsController < ApplicationController
     end
   end
 
+  def cancel
+    @booking.status = "Decline"
+    @booking.save
+    redirect_to booking_path(@booking)
+  end
+
+  def accept
+    @booking.status = "Accept"
+    @booking.save
+    redirect_to booking_path(@booking)
+  end
+
   private
 
   def find_user
@@ -53,6 +65,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :deadline)
+    params.require(:booking).permit(:deadline)
   end
 end
