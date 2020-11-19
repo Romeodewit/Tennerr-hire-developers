@@ -1,6 +1,13 @@
 class ServicesController < ApplicationController
   def index
+    # @services = Service.all
     @services = Service.all
+    if params[:query] && params[:query] != ""
+      @services = Service.search_by_title_and_category(params[:query])
+    end
+    if params[:filter] && params[:filter] != 'Any Category'
+      @services = @services.search_by_title_and_category(params[:filter])
+    end
   end
 
   def show
