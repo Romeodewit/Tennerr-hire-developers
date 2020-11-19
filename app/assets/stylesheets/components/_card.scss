@@ -9,12 +9,19 @@
   box-shadow: 0 10px 30px rgba(0,0,0,.1);
   background-color: rgba(239, 239, 239, 1);
   transition: background-color 0.2s;
+  height: 300px;
+  display: flex;
 }
 
 .card:hover {
   background-color: lightgrey;
 }
 
+.card-img-top {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
 
 .card-title {
   color: rgb(0,0,0);
