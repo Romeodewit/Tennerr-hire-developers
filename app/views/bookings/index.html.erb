@@ -19,7 +19,7 @@
     <tbody>
       <% @outward_bookings.each do |booking| %>
         <tr>
-          <td><%= link_to booking.user.email, booking_path(booking) %></td>
+          <td><%= link_to "#{booking.user.first_name} #{booking.user.last_name}", booking_path(booking) %></td>
           <td><%= booking.service.title %></td>
           <td><%= booking.status %></td>
           <td><%= booking.deadline %></td>
