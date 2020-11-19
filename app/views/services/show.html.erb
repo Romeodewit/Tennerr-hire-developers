@@ -6,37 +6,40 @@
 	<div class="row">
 		<div class="col-sm-12 col-lg-7">	
 			<div class="d-flex flex-column" style="width: 100%">
-  		  <div class="d-flex flex-column bg-secondary my-2 p-3">
+  		  		<div class="d-flex flex-column bg-secondary my-2 p-3 bg-white border" style="height: 20em">
+  		  			<h3>Posted by: <%= @service.user.first_name %> <%= @service.user.last_name %></h3>
+					<% if @service.user.photos.attached? %>
+						<%= cl_image_tag @service.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
+					<% else %>
+						<%= image_tag "avatar.jpg", :alt => "avatar", width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
+					<% end %>
 					<p><strong>Price: £<%= @service.price %>.00/hr</strong></p>
 					<p><strong>Category: <%= @service.category %></strong></p>
-				</div>
-				<div class="bg-secondary my-2 p-3">
 					<p><strong>Description:</strong></p>
 					<p><%= @service.description %></p>
+					<div class="action">
+						<% if @service.user == current_user %>
+							<%= link_to 'Edit', edit_service_path(@service), class: "fas fa-pencil-alt" %>
+							<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' }, class: "far fa-trash-alt" %>
+						<% end %>
+						<%= link_to 'List', services_path, class: "far fa-list-alt" %>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-12 col-lg-5 bg-secondary mt-2 p-3">
+		<div class="col-sm-12 col-lg-5 bg-secondary mt-2 p-3 bg-white border" style="height: 15em">
 			<div>
 			<%= simple_form_for([@service, @booking]) do |f| %>
-				<%= f.input :deadline, html5: true, label: "Project Deadline" %>
+				<%= f.input :deadline, html5: true, label: "Select deadline for this job:" %>
 			  <%= f.submit class: "btn btn-dark" %>
 			<% end %>
+			</div>
 		</div>
-	</div>
-
-	<div class="col-12">
-		<% if @service.user == current_user %>
-			<%= link_to 'Edit', edit_service_path(@service) %>
-			<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
-		<% end %>
-		<%= link_to 'List', services_path %>
-	
-		<h2>Gallery</h2>
 	</div>
 
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+	<h3>Portfolio</h3>
 	<div class="carousel-inner">
 	  <% if @service.photos.attached? %>
   		<% @service.photos.each_with_index do |photo, index| %>
@@ -55,12 +58,7 @@
 	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
 	  <span class="sr-only">Next</span>
 	</a>
-	</div>
 </div>
-
-<%= link_to 'Edit', edit_service_path(@service) %>
-<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'List', services_path %>
 
 <div class="w-100 p-3">
 	<div class="row">
@@ -93,6 +91,6 @@
 			<% end %>
 		</div>
 	</div>
-
+	</div>
 </div>
 
