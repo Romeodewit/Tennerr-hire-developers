@@ -6,6 +6,8 @@ class ServicesController < ApplicationController
   def show
     @service = Service.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
+    @reviews = Review.where(service_id: @service).limit(5)
   end
 
   def new

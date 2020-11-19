@@ -11,7 +11,7 @@
 
 <div class="w-75 bg-light p-3" style="margin: 0px auto;">
 	<div class="row">
-		<div class="col-7">	
+		<div class="col-sm-12 col-lg-7">	
 			<div class="d-flex flex-column" style="width: 100%">
   		  <div class="d-flex flex-column bg-secondary my-2 p-3">
 					<p><strong>Price: £<%= @service.price %>.00/hr</strong></p>
@@ -23,7 +23,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-5 bg-secondary my-2 p-3">
+		<div class="col-sm-12 col-lg-5 bg-secondary mt-2 p-3">
 			<div>
 			<%= simple_form_for([@service, @booking]) do |f| %>
 				<%= f.input :deadline, html5: true, label: "Project Deadline" %>
@@ -33,8 +33,40 @@
 	</div>
 </div>
 
-
-
 <%= link_to 'Edit', edit_service_path(@service) %>
 <%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'List', services_path %>
+
+<div class="w-100 p-3">
+	<div class="row">
+		<div class="col-xs-12 col-lg-6 p-3 bg-white border">
+			<h2>Add a review</h2>
+			<%= simple_form_for [ @service, @review ] do |f| %>
+		  	<%= f.input :title %>
+		  	<%= f.input :content %>
+		  	<%= f.input :rating %>
+		  	<%= f.submit class: "btn btn-dark" %>
+			<% end %>
+		</div>
+
+
+		<div class="col-xs-12 col-lg-6">
+			<% @reviews.each do |review| %>
+				<div class="bg-white p-3 mb-4 border">
+					<h1><%= review.title %></h1>
+					<p><%= review.content %></p>
+					<% (review.rating).times do %> 
+						<i class="fas fa-star"></i>
+					<% end %>
+					<% if review.user == current_user %>
+						<%= link_to "Edit", edit_review_path(review), class: "btn btn-dark" %>
+						<%= link_to "Delete", review_path(review), class: "btn btn-dark", method: :delete, data: { confirm: "Are you sure?" } %>
+					<% else %>
+						<%= review.user.first_name %><%= review.user.last_name %>
+					<% end %>
+				</div>	
+			<% end %>
+		</div>
+	</div>
+
+</div>
