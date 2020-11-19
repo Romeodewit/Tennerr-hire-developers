@@ -31,37 +31,32 @@
 			<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
 		<% end %>
 		<%= link_to 'List', services_path %>
+	</div>
 	
-		<h2>Gallery</h2>
-	</div>
-
-
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-	<div class="carousel-inner">
-	  <% if @service.photos.attached? %>
-  		<% @service.photos.each_with_index do |photo, index| %>
-  			<!-- add logical statement to make first photo an active item -->
-    		<div class="carousel-item <%= "active" if index.zero? %>" style=" height: 60vh">
-        	<%= cl_image_tag photo.key, class: "d-block w-100" %>
-    		</div>
-      <% end %>
-    <% end %>
-	</div>
-	<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	  <span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	  <span class="sr-only">Next</span>
-	</a>
+<div class="w-75 p-3">
+	<h2>Gallery</h2>
+	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+		<div class="carousel-inner">
+		  <% if @service.photos.attached? %>
+	  		<% @service.photos.each_with_index do |photo, index| %>
+	  			<!-- add logical statement to make first photo an active item -->
+	    		<div class="carousel-item <%= "active" if index.zero? %>" style=" height: 60vh">
+	        	<%= cl_image_tag photo.key, class: "d-block w-100" %>
+	    		</div>
+	      <% end %>
+	    <% end %>
+		</div>
+		<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+		  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		  <span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+		  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		  <span class="sr-only">Next</span>
+		</a>
+		</div>
 	</div>
 </div>
-
-<%= link_to 'Edit', edit_service_path(@service) %>
-<%= link_to 'Delete', @service, method: :delete, data: { confirm: 'Are you sure?' } %>
-<%= link_to 'List', services_path %>
-
 <div class="w-100 p-3">
 	<div class="row">
 		<div class="col-xs-12 col-lg-6 p-3 bg-white border">
