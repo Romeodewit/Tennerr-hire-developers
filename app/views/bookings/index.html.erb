@@ -1,54 +1,17 @@
+<div class="services-banner">
+  <div class="container">
+    <h1>Bookings</h1>
+  </div>
+</div>
+
 <div class="container">
-  <div class="services-banner">
-    <div class="container">
-      <h1>Bookings</h1>
-    </div>
+  <div class="container mt-3">
+    <h1>Jobs you've booked</h1>
+    <%= render "shared/table", bookings: @outward_bookings %>
   </div>
 
   <div class="container mt-3">
-    <h1>Jobs you've booked</h1>
-    <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Project</th>
-        <th scope="col">Status</th>
-        <th scope="col">Deadline</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @outward_bookings.each do |booking| %>
-        <tr>
-          <td><%= link_to "#{booking.user.first_name} #{booking.user.last_name}", booking_path(booking) %></td>
-          <td><%= booking.service.title %></td>
-          <td><%= booking.status %></td>
-          <td><%= booking.deadline %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    </table>
-  </div>
-
-  <div class="container">
     <h1>Jobs you are booked for</h1>
-    <table class="table table-hover">
-    <thead>
-      <tr>
-        <th scope="col">Name</th>
-        <th scope="col">Project</th>
-        <th scope="col">Status</th>
-        <th scope="col">Deadline</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @inward_bookings.each do |booking| %>
-        <tr>
-          <td><%= link_to booking.user.email, booking_path(booking) %></td>
-          <td><%= booking.service.title %></td>
-          <td><%= booking.status %>
-          <td><%= booking.deadline %></td>
-        </tr>
-      <% end %>
-    </tbody>
-    </table>
+    <%= render "shared/table", bookings: @inward_bookings %>
   </div>
+</div>
