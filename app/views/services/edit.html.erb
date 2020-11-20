@@ -1,11 +1,13 @@
-<div class="container my-3">
+<div class="w-75 bg-light py-5 px-3" style="margin: 0 auto">
   <div class="row justify-content-center">
-    <div class="col-xs-12 col-sm-6">
-      <div class="form-service">
-        <h2>Create a new service</h2>
-        <%= render "form", service: @service %>
-        <%= link_to 'Back', @service %>
-      </div>
-    </div>
-  </div>
+    <div class="col-xs-8 col-lg-6 bg-white pt-3 border border-dark-shadow rounded">
+      <div class="row justify-content-center">
+        <div class="col-9">
+	        <h2>Create a new service</h2>
+	        <%= render "form", service: @service %>
+	        <div class="col-9"><%= link_to 'Back', @service %></div>
+      	</div>
+    	</div>
+  	</div>
+	</div>
 </div>

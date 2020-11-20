@@ -1,7 +1,6 @@
-
-<div class="w-75 bg-light pt-5 px-3" style="margin: 0 auto; height: 57%">
+<div class="w-75 bg-light py-5 px-3" style="margin: 0 auto">
   <div class="row justify-content-center">
-    <div class="col-xs-8 col-lg-6 bg-white p-3 border border-dark">
+    <div class="col-xs-8 col-lg-6 bg-white p-3 border border-dark-shadow rounded">
       <div class="row justify-content-center">
         <div class="col-9 p-3">
           <h2>Edit <%= resource_name.to_s.humanize %></h2>
@@ -33,19 +32,19 @@
                           hint: "we need your current password to confirm your changes",
                           required: true,
                           input_html: { autocomplete: "current-password" } %>
-              <%= f.input :photos, 
-                          as: :file, 
+              <%= f.input :photos,
+                          as: :file,
                           input_html: { multiple: false } %>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Update", class: "btn btn-dark my-3" %>
+              <%= f.button :submit, "Update", class: "btn btn-dark w-100 my-3" %>
             </div>
           <% end %>
 
-          <p>Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
+          <div class="col-9 pl-0 pb-1"><%= link_to "Back", :back %></div>
 
-          <%= link_to "Back", :back %>
+          <div class="col-9 pl-0 py-2">Unhappy? <%= link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></div>
         </div>
       </div>
     </div>

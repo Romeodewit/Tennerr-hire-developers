@@ -1,7 +1,18 @@
 <div class="home-banner">
-  <div class="buttons">
-    <%= link_to "Join", new_user_registration_path, class: "btn btn-flat" %>
-    <br>
-  <%= link_to "Login", new_user_session_path, class: "btn btn-flat" %>
+  <div class="container">
+    <h1>
+      <span id="banner-typed-text"></span>
+    </h1>
+      <%= link_to "Explore", services_path, class: "btn btn-flat" %>
+  </div>
+</div>
+<div class="container my-3">
+  <h1>Top Services</h1>
+  <div class="cards">
+    <% services_home.each do |service| %>
+      <%= link_to service_path(service) do %>
+        <%= render "shared/card_service", service: service %>
+      <% end %>
+    <% end %>
   </div>
 </div>

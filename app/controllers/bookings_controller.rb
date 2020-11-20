@@ -19,7 +19,7 @@ class BookingsController < ApplicationController
     @booking.date = Date.today
     @booking.status = "Pending"
     if @booking.save!
-      redirect_to booking_path(@booking)
+      redirect_to bookings_path
     else
       render '/services/show'
     end
@@ -32,7 +32,7 @@ class BookingsController < ApplicationController
   def update
     @service = @booking.service
     if @booking.update(booking_params)
-      redirect_to booking_path(@booking)
+      redirect_to bookings_path
     else
       render :edit
     end
@@ -41,13 +41,13 @@ class BookingsController < ApplicationController
   def cancel
     @booking.status = "Decline"
     @booking.save
-    redirect_to booking_path(@booking)
+    redirect_to bookings_path( anchor: "multiCollapseExample#{@booking.id}")
   end
 
   def accept
     @booking.status = "Accept"
     @booking.save
-    redirect_to booking_path(@booking)
+    redirect_to bookings_path( anchor: "multiCollapseExample#{@booking.id}")
   end
 
   private
