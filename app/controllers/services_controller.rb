@@ -48,7 +48,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @service.destroy
 
-    redirect_to services_path
+    redirect_to root_path
   end
 
   private
