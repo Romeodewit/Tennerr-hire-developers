@@ -1,20 +1,18 @@
-<div class="background-opacity">
-	<% if @service.photos.attached? %>
-	  <% @service.photos.each do |photo| %>
-			<div class="service-banner" style="background-image: url('<%= cl_image_path photo.key %>');"><h1><%= @service.title %></h1></div>
-		<% end %>
-	<% else %>
-		<div class="service-banner" style="background-image: url('<%= asset_path 'generic_photo.jpg' %>');"><h1><%= @service.title %></h1></div>
-	<% end %>
-</div>
-
-<div class="booking-form-container bg-light">
-  <div class="booking-form">
-    <%= simple_form_for(@booking) do |f| %>
-    <%= f.input :deadline, html5: true %>
-    <div class="d-flex justify-content-between">
-      <%= f.submit class: "btn btn-dark"%>
-      <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark my-1" %>
+<div class="w-75 bg-light py-5 px-3" style="margin: 0 auto">
+  <div class="row justify-content-center">
+    <div class="col-xs-8 col-lg-6 bg-white p-3 border border-dark-shadow rounded">
+      <div class="row justify-content-center">
+        <div class="col-9 p-3">
+          <%= simple_form_for(@booking) do |f| %>
+          <%= f.input :deadline, html5: true %>
+          <div class="d-flex justify-content-between">
+            <%= f.submit class: "btn btn-dark"%>
+            <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark my-1" %>
+          </div>
+          <% end %>
+        </div>
+      </div>
     </div>
-  <% end %>
+  </div>
+</div>
 
