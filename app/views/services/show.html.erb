@@ -55,12 +55,6 @@
 				<div class="d-flex flex-column">
 	  		  <div class="d-flex flex-column bg-secondary bg-white border p-3 my-3" style="height: 20em">
 	  		  	<h3>Posted by: <%= @service.user.first_name %> <%= @service.user.last_name %></h3>
-						<% if @service.user.photos.attached? %>
-							<%= cl_image_tag @service.user.photos.first.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
-						<% else %>
-							<%= image_tag "avatar.jpg", :alt => "avatar", width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
-						<% end %>
-						<p><strong>Price: £<%= @service.price %>.00/hr</strong></p>
 						<p><strong>Category: <%= @service.category %></strong></p>
 						<p><strong>Description:</strong></p>
 						<p><%= @service.description %></p>
