@@ -1,9 +1,54 @@
-<div class="background-opacity">
-	<div class="service-banner" style="background-image: url('<%= asset_path 'generic_photo.jpg', crop: :fill %>');"><h1><%= @service.title %></h1></div>
-</div>
 
-<div class="w-75 bg-light p-3" style="margin: 0px auto">
-	<div class="row">
+<div class="container bg-light p-3" style="margin: 0px auto">
+  <div class="d-flex justify-content-between">
+    <div>
+      <div class="show-service-title pt-20"><h1><%= @service.title %></h1></div>
+      <p><strong><%= @service.category %></strong></p>
+    </div>
+    <% if @service.user.photos.attached? %>
+      <%= cl_image_tag @service.user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar show-profile" %>
+    <% else %>
+      <%= image_tag "avatar.jpg", :alt => "avatar", width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar show-profile" %>
+    <% end %>
+  </div>
+
+
+
+<div class="row">
+	<div class="col-sm-12 col-lg-8">
+		<div>
+       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+         <div class="carousel-inner">
+           <% if @service.photos.attached? %>
+            <% @service.photos.each_with_index do |photo, index| %>
+                <!-- add logical statement to make first photo an active item -->
+                <div class="carousel-item <%= "active" if index.zero? %>" style=" height: 40vh">
+                  <%= cl_image_tag photo.key, class: "d-block w-100" %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-lg-4">
+      <div class="bg-secondary bg-white border p-3 d-flex flex-column justify-content-between" style="height: 40vh">
+        <h4><strong>£<%= @service.price %>.00/hr</strong></h4>
+        <%= simple_form_for([@service, @booking], html:{class: "d-flex flex-column justify-content-between flex-grow-1"}) do |f| %>
+          <%= f.input :deadline, html5: true, label: "Project deadline:", input_html:{class: "flex-grow-1"} %>
+          <%= f.submit class: "btn btn-dark btn-block" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 		<div class="col-sm-12 col-lg-7">
 			<div class="d-flex flex-column" style="width: 100%">
   		  		<div class="d-flex flex-column bg-secondary my-2 p-3 bg-white border" style="height: 20em">
@@ -40,41 +85,20 @@
 	</div>
 
 
-<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-	<h3>Portfolio</h3>
-	<div class="carousel-inner">
-	  <% if @service.photos.attached? %>
-  		<% @service.photos.each_with_index do |photo, index| %>
-  			<!-- add logical statement to make first photo an active item -->
-    		<div class="carousel-item <%= "active" if index.zero? %>" style=" height: 60vh">
-        	<%= cl_image_tag photo.key, class: "d-block w-100" %>
-    		</div>
-      <% end %>
-    <% end %>
-	</div>
-	<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-	  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-	  <span class="sr-only">Previous</span>
-	</a>
-	<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-	  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-	  <span class="sr-only">Next</span>
-	</a>
-</div>
-
-<div class="w-100 p-3">
-	<div class="row">
-		<div class="col-xs-12 col-lg-6 p-3 bg-white border">
-			<h2>Add a review</h2>
-			<%= simple_form_for([ @service, @review ], remote: true) do |f| %>
-		  	<%= f.input :title %>
-		  	<%= f.input :content %>
-		  	<%= f.input :rating %>
-		  	<%= f.submit class: "btn btn-dark" %>
-			<% end %>
-		</div>
 
 
+
+ <div class="w-100 p-3">
+  <div class="row">
+  	<div class="col-xs-12 col-lg-6 p-3 bg-white border">
+  		<h2>Add a review</h2>
+  		<%= simple_form_for([ @service, @review ], remote: true) do |f| %>
+  		  <%= f.input :title %>
+  		  <%= f.input :content %>
+  		  <%= f.input :rating %>
+  		  <%= f.submit class: "btn btn-dark" %>
+  		<% end %>
+  	</div>
 		<div class="col-xs-12 col-lg-6">
 			<% @reviews.each do |review| %>
 				<div class="bg-white p-3 mb-4 border">
@@ -96,3 +120,24 @@
 	</div>
 </div>
 
+
+  		<div class="col-xs-12 col-lg-6">
+  			<% @reviews.each do |review| %>
+  				<div class="bg-white p-3 mb-4 border">
+  					<h1><%= review.title %></h1>
+  					<p id="review-<%= review.id %>"><%= review.content %></p>
+  					<% (review.rating).times do %>
+  						<i class="fas fa-star"></i>
+  					<% end %>
+  					<% if review.user == current_user %>
+  						<%= link_to "Edit", edit_review_path(review), class: "btn btn-dark" %>
+  						<%= link_to "Delete", review_path(review), class: "btn btn-dark", method: :delete, data: { confirm: "Are you sure?" } %>
+  					<% else %>
+  						<%= review.user.first_name %><%= review.user.last_name %>
+  					<% end %>
+  				</div>
+  			<% end %>
+  		</div>
+  	</div>
+  </div>
+</div>
