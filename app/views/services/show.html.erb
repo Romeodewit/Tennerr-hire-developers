@@ -27,14 +27,16 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-sm-12 col-lg-5 bg-secondary mt-2 p-3 bg-white border" style="height: 15em">
-			<div>
-			<%= simple_form_for([@service, @booking]) do |f| %>
-				<%= f.input :deadline, html5: true, label: "Select deadline for this job:" %>
-			  <%= f.submit class: "btn btn-dark" %>
-			<% end %>
+		<% if @service.user != current_user %>
+			<div class="col-sm-12 col-lg-5 bg-secondary mt-2 p-3 bg-white border" style="height: 15em">
+				<div>
+				<%= simple_form_for([@service, @booking]) do |f| %>
+					<%= f.input :deadline, html5: true, label: "Select deadline for this job:" %>
+				  <%= f.submit class: "btn btn-dark" %>
+				<% end %>
+				</div>
 			</div>
-		</div>
+		<% end %>
 	</div>
 
 
