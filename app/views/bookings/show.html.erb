@@ -9,45 +9,50 @@
 </div>
 
 <div>
-  <div class="booking-information bg-light">
-    <div class="booking-basics">
-    <p><strong>Description: </strong><%= @booking.service.description %></p>
-    <p><strong>Price: </strong><%= @booking.service.price %></p>
-    <p><strong>Date booked: </strong><%= @booking.date %></p>
-    <p><strong>Deadline: </strong><%= @booking.deadline %></p>
-    <% if @booking.status == "Accept" %>
-      <p><strong>Status: </strong>Accepted</p>
-    <% elsif @booking.status == "Decline" %>
-      <p><strong>Status: </strong>Declined</p>
-    <% else %>
-      <p><strong>Status: </strong>Pending</p>
-    <% end %>
-
-    </div>
-    <div class="booking-actions">
-    <% if @booking.user == current_user %> 
-      <% if @booking.status == "Decline" %>
-        <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
-      <% else %>
-        <%= link_to "Cancel", cancel_booking_path(@booking), method: :patch, class: "btn btn-danger", remote: true %>
-        <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
-      <% end %>
-    <% elsif @booking.service.user == current_user %>
-      <div class="d-flex justify-content-between">
-        <div>
-          <% if @booking.status == "Pending" %>
-            <%= link_to "Cancel", cancel_booking_path(@booking), method: :patch, class: "btn btn-danger", remote: true %>
-            <%= link_to "Accept", accept_booking_path(@booking), method: :patch, class: "btn btn-success", remote: true %>
-          <% elsif @booking.status == "Accept" %>
-            <%= link_to "Cancel", cancel_booking_path(@booking), method: :patch, class: "btn btn-danger", remote: true %>
+  <div class="w-75 bg-light py-5 px-3" style="margin: 0 auto">
+  <div class="row justify-content-center">
+    <div class="col-xs-8 col-lg-6 bg-white p-3 border border-dark-shadow rounded">
+      <div class="row justify-content-center">
+        <div class="col-9 p-3">
+          <p><strong>Description: </strong><%= @booking.service.description %></p>
+          <p><strong>Price: </strong>£<%= @booking.service.price %></p>
+          <p><strong>Date booked: </strong><%= @booking.date %></p>
+          <p><strong>Deadline: </strong><%= @booking.deadline %></p>
+          <% if @booking.status == "Accept" %>
+            <p><strong>Status: </strong>Accepted</p>
+          <% elsif @booking.status == "Decline" %>
+            <p><strong>Status: </strong>Declined</p>
+          <% else %>
+            <p><strong>Status: </strong>Pending</p>
           <% end %>
         </div>
-        <div>
-          <%= link_to "Edit", edit_booking_path, class: "btn btn-dark" %>
-          <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
+        <div class="booking-actions">
+        <% if @booking.user == current_user %> 
+          <% if @booking.status == "Decline" %>
+            <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
+          <% else %>
+            <%= link_to "Cancel", cancel_booking_path(@booking), method: :patch, class: "btn btn-danger", remote: true %>
+            <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
+          <% end %>
+        <% elsif @booking.service.user == current_user %>
+          <div class="d-flex justify-content-between">
+            <div>
+              <% if @booking.status == "Pending" %>
+                <%= link_to "Cancel", cancel_booking_path(@booking), method: :patch, class: "btn btn-danger", remote: true %>
+                <%= link_to "Accept", accept_booking_path(@booking), method: :patch, class: "btn btn-success", remote: true %>
+              <% elsif @booking.status == "Accept" %>
+                <%= link_to "Cancel", cancel_booking_path(@booking), method: :patch, class: "btn btn-danger", remote: true %>
+              <% end %>
+            </div>
+            <div>
+              <%= link_to "Edit", edit_booking_path, class: "btn btn-dark" %>
+              <%= link_to "Back to bookings", bookings_path, class: "btn btn-dark" %>
+            </div>
+          </div>
+        <% end %>
         </div>
       </div>
-    <% end %>
     </div>
+  </div>
   </div>
 </div>
