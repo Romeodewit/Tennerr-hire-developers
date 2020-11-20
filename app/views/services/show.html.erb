@@ -64,7 +64,7 @@
 	<div class="row">
 		<div class="col-xs-12 col-lg-6 p-3 bg-white border">
 			<h2>Add a review</h2>
-			<%= simple_form_for [ @service, @review ] do |f| %>
+			<%= simple_form_for([ @service, @review ], remote: true) do |f| %>
 		  	<%= f.input :title %>
 		  	<%= f.input :content %>
 		  	<%= f.input :rating %>
@@ -77,7 +77,7 @@
 			<% @reviews.each do |review| %>
 				<div class="bg-white p-3 mb-4 border">
 					<h1><%= review.title %></h1>
-					<p><%= review.content %></p>
+					<p id="review-<%= review.id %>"><%= review.content %></p>
 					<% (review.rating).times do %> 
 						<i class="fas fa-star"></i>
 					<% end %>
