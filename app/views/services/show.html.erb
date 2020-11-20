@@ -40,7 +40,7 @@
 	    	  </div>
 	    	</div>
 	    	<div class="col-sm-12 col-lg-4">
-	    	  <div class="bg-secondary bg-white border my-2 p-3 d-flex flex-column justify-content-between" style="height: 40vh">
+	    	  <div class="bg-secondary bg-white border my-2 p-3 d-flex flex-column justify-content-between" style="height: 400px">
 	    	    <h4><strong>£<%= @service.price %>.00/hr</strong></h4>
 	    	    <%= simple_form_for([@service, @booking], html:{class: "d-flex flex-column justify-content-between flex-grow-1"}) do |f| %>
 	    	      <%= f.input :deadline, html5: true, label: "Project deadline:", input_html:{class: "flex-grow-1"} %>
@@ -52,7 +52,7 @@
 	  </div>
 		<div class="row">
 			<div class="col-sm-12 col-lg-12">
-				<div class="d-flex flex-column">
+				<div class="d-flex flex-column mb-auto">
 	  		  <div class="d-flex flex-column bg-secondary bg-white border p-3 my-3" style="height: 20em">
 	  		  	<h3>Posted by: <%= @service.user.first_name %> <%= @service.user.last_name %></h3>
 						<p><strong>Category: <%= @service.category %></strong></p>
@@ -76,7 +76,7 @@
 
  	<div class="container bg-light py-3">
   	<div class="row justify-content-between">
-  		<div class="col-xs-12 col-lg-5 p-3 mx-3 bg-white border" style="height: 43vh">
+  		<div class="col-xs-12 col-lg-5 p-3 mx-3 bg-white border" style="height: 400px">
   			<h2>Add a review</h2>
   			<%= simple_form_for([ @service, @review ], remote: true) do |f| %>
   			  <%= f.input :title %>
