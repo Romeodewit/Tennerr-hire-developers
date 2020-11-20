@@ -27,7 +27,7 @@ gem 'devise'
 gem 'cloudinary', '~> 1.16.0'
 # the pg gem
 gem 'pg_search', '~> 2.3.0'
-
+gem "tabs_on_rails"
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
