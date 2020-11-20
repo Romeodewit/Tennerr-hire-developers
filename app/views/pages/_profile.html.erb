@@ -7,7 +7,6 @@
 
   <div class="container mt-3">
     <h1>My services</h1>
-    <div class="container">
       <div class="cards">
         <% services.each do |service| %>
           <%= link_to service_path(service) do %>
@@ -18,7 +17,6 @@
           <%= render "shared/card_add" %>
         <% end %>
       </div>
-    </div>
   </div>
 
   <div class="container mt-3">

@@ -20,18 +20,12 @@
         <%= select_tag :filter, options_for_select(Service::CATEGORIES), class: "form-control", onchange: "this.form.submit()" %>
       <% end %>
     </div>
-
-
-
-
-    <div class="container">
-      <div class="cards">
-        <% @services.each do |service| %>
-          <%= link_to service_path(service) do %>
-            <%= render "shared/card_service", service: service %>
-          <% end %>
+    <div class="cards">
+      <% @services.each do |service| %>
+        <%= link_to service_path(service) do %>
+          <%= render "shared/card_service", service: service %>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
