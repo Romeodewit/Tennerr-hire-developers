@@ -6,7 +6,7 @@
       <p><strong><%= @service.category %></strong></p>
     </div>
     <% if @service.user.photos.attached? %>
-      <%= cl_image_tag @service.user.photo.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar show-profile" %>
+      <%= cl_image_tag @service.user.photos.first.key, width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar show-profile" %>
     <% else %>
       <%= image_tag "avatar.jpg", :alt => "avatar", width: 50, height: 50, crop: :thumb, gravity: :face, class: "avatar show-profile" %>
     <% end %>
