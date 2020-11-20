@@ -14,7 +14,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @booking = Booking.new
     @review = Review.new
-    @reviews = Review.where(service_id: @service)
+    @reviews = Review.where(service_id: @service).order(created_at: :desc)
   end
 
   def new
