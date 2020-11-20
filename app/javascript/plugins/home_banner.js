@@ -2,9 +2,9 @@ import Typed from 'typed.js';
 
 const loadDynamicBannerText = () => {
   new Typed('#banner-typed-text', {
-    strings: ["Need an online presence?", "Explore our services!"],
+    strings: ["Looking for a freelancer?", "Explore our services!"],
     typeSpeed: 70,
-    loop: true
+    loop: false
   });
 }
 
