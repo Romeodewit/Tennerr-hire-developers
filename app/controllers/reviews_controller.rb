@@ -5,7 +5,7 @@ class ReviewsController < ApplicationController
     @review.service = @service
     @review.user = current_user
     if @review.save
-      redirect_to service_path(@service)
+      redirect_to service_path(@service, anchor: "review-#{@review.id}")
     else
       render "service/show"
     end

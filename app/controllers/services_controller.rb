@@ -14,7 +14,7 @@ class ServicesController < ApplicationController
     @service = Service.find(params[:id])
     @booking = Booking.new
     @review = Review.new
-    @reviews = Review.where(service_id: @service).limit(5)
+    @reviews = Review.where(service_id: @service)
   end
 
   def new
