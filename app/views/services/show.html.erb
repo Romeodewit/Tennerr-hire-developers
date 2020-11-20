@@ -4,12 +4,12 @@
 
 <div class="w-75 bg-light p-3" style="margin: 0px auto">
 	<div class="row">
-		<div class="col-sm-12 col-lg-7">	
+		<div class="col-sm-12 col-lg-7">
 			<div class="d-flex flex-column" style="width: 100%">
   		  		<div class="d-flex flex-column bg-secondary my-2 p-3 bg-white border" style="height: 20em">
   		  			<h3>Posted by: <%= @service.user.first_name %> <%= @service.user.last_name %></h3>
 					<% if @service.user.photos.attached? %>
-						<%= cl_image_tag @service.user.photo.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
+						<%= cl_image_tag @service.user.photos.first.key, width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
 					<% else %>
 						<%= image_tag "avatar.jpg", :alt => "avatar", width: 150, height: 150, crop: :thumb, gravity: :face, class: "avatar" %>
 					<% end %>
@@ -78,7 +78,7 @@
 				<div class="bg-white p-3 mb-4 border">
 					<h1><%= review.title %></h1>
 					<p id="review-<%= review.id %>"><%= review.content %></p>
-					<% (review.rating).times do %> 
+					<% (review.rating).times do %>
 						<i class="fas fa-star"></i>
 					<% end %>
 					<% if review.user == current_user %>
@@ -87,7 +87,7 @@
 					<% else %>
 						<%= review.user.first_name %><%= review.user.last_name %>
 					<% end %>
-				</div>	
+				</div>
 			<% end %>
 		</div>
 	</div>
