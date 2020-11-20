@@ -32,13 +32,13 @@
                           hint: "we need your current password to confirm your changes",
                           required: true,
                           input_html: { autocomplete: "current-password" } %>
-              <%= f.input :photos, 
-                          as: :file, 
+              <%= f.input :photos,
+                          as: :file,
                           input_html: { multiple: false } %>
             </div>
 
             <div class="form-actions">
-              <%= f.button :submit, "Update", class: "btn btn-dark my-3" %>
+              <%= f.button :submit, "Update", class: "btn btn-dark w-100 my-3" %>
             </div>
           <% end %>
 
