@@ -1,13 +1,37 @@
+<div class="services-banner">
+	<div class="container">
+		<h1>Services</h1>
+	</div>
+</div>
 <div class="container">
-	<h1>Hire a developer</h1>
-	<h2>Our services include: </h2>
 
-	<% @services.each do |service| %>
-		<%= link_to service_path(service) do %>
-			<ul>
-				<li><%= service.title %> | <%= service.category %> </li>
-			</ul>
-		<% end %>
-	<% end %>
+  <div class="container mt-3 mb-5">
+    <h1>Hire a developer</h1>
+    <div class="d-flex justify-content-between mb-3">
+      <%= form_tag services_path, method: :get, class: "form-inline" do %>
+        <%= text_field_tag :query,
+        params[:query],
+        class: "form-control search_bar",
+        placeholder: "Find a service"
+        %>
+        <%= submit_tag "Search", class: "btn btn-dark ml-2" %>
+      <% end %>
+      <%= form_tag services_path, method: :get do %>
+        <%= select_tag :filter, options_for_select(Service::CATEGORIES), class: "form-control", onchange: "this.form.submit()" %>
+      <% end %>
+    </div>
 
+
+
+
+    <div class="container">
+      <div class="cards">
+        <% @services.each do |service| %>
+          <%= link_to service_path(service) do %>
+            <%= render "shared/card_service", service: service %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

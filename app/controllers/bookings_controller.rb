@@ -1,13 +1,15 @@
 class BookingsController < ApplicationController
-  before_action :find_booking, only: [:show, :edit, :update]
+  before_action :find_booking, only: [:show, :edit, :update, :cancel, :accept]
   before_action :find_service, only: [:create]
-  before_action :find_user, only: [:create]
+  before_action :find_user, only: [:create, :index]
 
   def index
-    @bookings = Booking.all
+    @inward_bookings = current_user.incoming_bookings
+    @outward_bookings = current_user.bookings
   end
 
   def show
+    @service = @booking.service
   end
 
   def create
@@ -24,14 +26,28 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @service = @booking.service
   end
 
   def update
+    @service = @booking.service
     if @booking.update(booking_params)
       redirect_to booking_path(@booking)
     else
       render :edit
     end
+  end
+
+  def cancel
+    @booking.status = "Decline"
+    @booking.save
+    redirect_to booking_path(@booking)
+  end
+
+  def accept
+    @booking.status = "Accept"
+    @booking.save
+    redirect_to booking_path(@booking)
   end
 
   private
@@ -49,6 +65,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:status, :deadline)
+    params.require(:booking).permit(:deadline)
   end
 end

@@ -1,0 +1,19 @@
+.registration-banner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 340px;
+  width: 75%;
+  margin: 0px auto;
+  padding-left: 40px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), asset-url("registration_banner.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  h1 {
+    position: relative;
+    top: 30px;
+    color: white;
+    font-weight: bold;
+  }
+}
