@@ -20,8 +20,10 @@
   </div>
 
   <div class="container mt-3">
-    <h1>My bookings</h1>
-    <%= render "shared/table", bookings: bookings %>
+    <h1>Upcoming Bookings</h1>
+    <div style="margin: 10px auto; overflow-y: scroll; height: 290px;">
+      <%= render "shared/table", bookings: bookings %>
+    </div>
   </div>
 </div>
 

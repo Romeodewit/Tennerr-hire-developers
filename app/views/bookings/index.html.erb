@@ -5,20 +5,42 @@
 </div>
 
 <ul class="nav nav-tabs w-75" id="myTab" role="tablist" style="margin: 30px auto;">
-  <li class="nav-item">
-    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Incoming Bookings</a>
+  <li class="nav-item">  
+    <a class="nav-link active" id="new-bookings-tab" data-toggle="tab" href="#new-bookings" role="tab" aria-controls="new-bookings" aria-selected="true">New Bookings <%= "(#{@new_bookings.count})" %></a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Outgoing Bookings</a>
+    <a class="nav-link" id="incoming-bookings-tab" data-toggle="tab" href="#incoming-bookings" role="tab" aria-controls="incoming-bookings" aria-selected="false">Incoming Bookings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="outgoing-bookings-tab" data-toggle="tab" href="#outgoing-bookings" role="tab" aria-controls="outgoing-bookings" aria-selected="false">Outgoing Bookings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="declined-bookings-tab" data-toggle="tab" href="#declined-bookings" role="tab" aria-controls="declined-bookings" aria-selected="false">Declined Bookings</a>
   </li>
 </ul>
-<div class="tab-content w-75" style="margin: 10px auto; overflow-y: scroll; height: 400px;" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-    <h1>Jobs you've booked</h1>
-    <%= render "shared/table", bookings: @outward_bookings %>
+<div class="tab-content w-75" style="margin: 10px auto;" id="myTabContent">
+  <div class="tab-pane fade show active" id="new-bookings" role="tabpanel" aria-labelledby="new-bookings-tab">
+    <h1>New bookings <%= "(#{@new_bookings.count})" %></h1>
+    <div style="margin: 10px auto; overflow-y: scroll; height: 524px;">
+      <%= render "shared/table", bookings: @new_bookings %>
+    </div>
   </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    <h1>Jobs you are booked for</h1>
-    <%= render "shared/table", bookings: @inward_bookings %>
+  <div class="tab-pane fade" id="incoming-bookings" role="tabpanel" aria-labelledby="incoming-bookings-tab">
+    <h1>Incoming bookings</h1>
+    <div style="margin: 10px auto; overflow-y: scroll; height: 524px;">
+      <%= render "shared/table", bookings: @inward_bookings %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="outgoing-bookings" role="tabpanel" aria-labelledby="outgoing-bookings-tab">
+    <h1>Outgoing bookings</h1>
+    <div style="margin: 10px auto; overflow-y: scroll; height: 524px;">
+      <%= render "shared/table", bookings: @outward_bookings %>
+    </div>
+  </div>
+  <div class="tab-pane fade" id="declined-bookings" role="tabpanel" aria-labelledby="declined-bookings-tab">
+    <h1>Declined Bookings</h1>
+    <div style="margin: 10px auto; overflow-y: scroll; height: 524px;">
+      <%= render "shared/table", bookings: @cancelled_bookings %>
+    </div>
   </div>
 </div>

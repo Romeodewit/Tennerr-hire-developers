@@ -4,12 +4,10 @@ class BookingsController < ApplicationController
   before_action :find_user, only: [:create, :index]
 
   def index
-    @inward_bookings = current_user.incoming_bookings
-    @outward_bookings = current_user.bookings
-  end
-
-  def show
-    @service = @booking.service
+    @inward_bookings = current_user.incoming_bookings.where(status: ["Pending", "Accept"]).order(status: :desc, deadline: :desc)
+    @outward_bookings = current_user.bookings.where(status: ["Pending", "Accept"]).order(status: :desc, deadline: :desc)
+    @new_bookings = current_user.incoming_bookings.where(status: "Pending").order(deadline: :desc)
+    @cancelled_bookings = current_user.incoming_bookings.where(status: "Decline")
   end
 
   def create
